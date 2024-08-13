@@ -1604,7 +1604,15 @@ class Redis(object):
         Return the value at key ``name``, or None if the key doesn't exist
         """
         return self.execute_command('GET', name)
-
+    
+    def getdel(self, name):
+        """
+        Get the value at key ``name`` and delete the key. This command
+        is similar to GET, except for the fact that it also deletes
+        For more information see https://redis.io/commands/getdel
+        """
+        return self.execute_command('GETDEL', name)
+    
     def __getitem__(self, name):
         """
         Return the value at key ``name``, raises a KeyError if the key
